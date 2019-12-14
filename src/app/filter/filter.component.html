@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+    <h2>Please Select the Department and Team</h2>
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+          <label for="Departments">Department: </label>
+          <br />
+          <select formControlName="Departments" id="Departments" [(ngModel)]="selecteddept">
+            <option *ngFor="let Department of Departments;
+           let i = index" [value]="Departments[i].name">
+              {{Departments[i].name}}
+            </option>
+            <!-- [selected]="Departments[i].name == selecteddept"-->
+
+
+          </select>
+          <!-- {{submitdept()}} -->
+
+          <div>{{submitText}}</div>
+
+          <br />
+          <label for="Teams">Team: </label>
+          <br />
+          <select formControlName="Teams" id="Teams" [(ngModel)]="selectedteam">
+            <option *ngFor="let Team of Teams; 
+          let i = index" [value]="Teams[i].name">
+              {{Teams[i].name}}
+            </option>
+            [selected]="Teams[i].name == selectedteam"
+          </select>
+          <br />
+          <br />
+
+          <button class='btn' on-click='submit(selecteddept,selectedteam)'>Submit</button>
+          <div>{{submitText}}</div>
+          <div>{{selecteddept}}</div>
+          <div>{{selectedteam}}</div>
+
+
+
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
